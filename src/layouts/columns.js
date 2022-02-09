@@ -9,7 +9,7 @@ export const computeColumnLayout = ({ photos, columns, containerWidth, margin })
   const photosWithSizes = photos.map(photo => {
     let newHeight = photo.height / photo.width * colWidth;
     if (photo.title) {
-      newHeight = newHeight * 2;
+      newHeight = newHeight * 1.25;
     }
     return {
       ...photo,
