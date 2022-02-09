@@ -8,9 +8,6 @@ export const computeColumnLayout = ({ photos, columns, containerWidth, margin })
   // map through each photo to assign adjusted height and width based on colWidth
   const photosWithSizes = photos.map(photo => {
     let newHeight = photo.height / photo.width * colWidth;
-    if (photo.title) {
-      newHeight = newHeight * 1.25;
-    }
     return {
       ...photo,
       width: round(colWidth, 1),
@@ -36,7 +33,7 @@ export const computeColumnLayout = ({ photos, columns, containerWidth, margin })
       return acc;
     }, 0);
 
-    photo.top = colCurrTopPositions[smallestCol];
+    photo.top = colCurrTopPositions[smallestCol] + (photo.title ? colCurrTopPositions[smallestCol] * 0.2 : 0);
     photo.left = colLeftPositions[smallestCol];
     colCurrTopPositions[smallestCol] = colCurrTopPositions[smallestCol] + photo.height + margin * 2;
 
