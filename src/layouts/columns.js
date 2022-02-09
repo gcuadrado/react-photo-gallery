@@ -43,6 +43,9 @@ export const computeColumnLayout = ({ photos, columns, containerWidth, margin })
       return acc;
     }, 0);
     photo.containerHeight = colCurrTopPositions[tallestCol];
+    if (photo.title) {
+      photo.containerHeight = photo.containerHeight * 1.2;
+    }
     return photo;
   });
   return photosPositioned;
